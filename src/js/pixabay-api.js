@@ -1,9 +1,10 @@
 //  імпорт бібліотек
 import axios from 'axios';
 
-export function getImagesByQuery(query) {
-  return axios
-    .get('https://pixabay.com/api/', {
+export async function getImagesByQuery(query) {
+  // return axios
+  try {
+    const response = await axios.get('https://pixabay.com/api/', {
       params: {
         key: '56293122-e27c6b73e2974564ba58f2b50',
         q: query,
@@ -11,9 +12,12 @@ export function getImagesByQuery(query) {
         orientation: 'horizontal',
         safesearch: true,
       },
-    })
-    .then(response => response.data);
-
+    });
+    // .then(response => response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
   // return console.log('GET searchImage:', query, axiosGet);
 }
 
