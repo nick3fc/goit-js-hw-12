@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     hideLoadMoreButton();
 
-    clearGallery(i);
+    clearGallery();
     page = 1;
 
     searchString = new FormData(event.currentTarget).get('search-text').trim();
