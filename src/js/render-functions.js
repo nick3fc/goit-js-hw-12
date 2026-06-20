@@ -1,6 +1,6 @@
 // -----------lib connection code----------
-// import SimpleLightbox from 'simplelightbox';
-// import 'simplelightbox/dist/simple-lightbox.min.css';
+window.global = window;
+globalThis.global = window;
 import * as SL from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const SimpleLightbox = SL.default.default;
@@ -97,12 +97,12 @@ export function hideLoader(arg) {
 export function showLoadMoreButton() {
   const loadMoreBTN = document.querySelector('.load-more-btn');
   loadMoreBTN.classList.remove('hidden');
-  console.log('showBTN');
+  // console.log('showBTN');
 }
 export function hideLoadMoreButton() {
   const loadMoreBTN = document.querySelector('.load-more-btn');
   loadMoreBTN.classList.add('hidden');
-  console.log('hideBTN');
+  // console.log('hideBTN');
 }
 
 // +++++++++++ ++++++++++++++++++++++++++++++ +++++++++++

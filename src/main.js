@@ -97,7 +97,7 @@ function handleResponse(data) {
   //   hideLoader('hiding');
   const totalHits = data.total;
   imagesArray = data.hits;
-  console.log('totalHits:', totalHits);
+  console.log('totalImages:', totalHits);
 
   if (imagesArray.length === 0) {
     iziToast.show({
@@ -130,7 +130,7 @@ function handleResponse(data) {
 
     // showLoadMoreButton();
     if (page < totalPages) {
-      console.log('page < totalPages', page < totalPages);
+      // console.log('page < totalPages', page < totalPages);
       showLoadMoreButton();
     } else {
       hideLoadMoreButton();
