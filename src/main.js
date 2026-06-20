@@ -13,6 +13,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 // import 'simplelightbox/dist/simple-lightbox.min.css';
 
 let imagesArray = [];
+let searchString;
 let page;
 let totalPages;
 const per_page = 15;
@@ -21,15 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM loaded');
 
   const form = document.querySelector('.form');
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
 
-    clearGallery(imagesArray);
+    hideLoadMoreButton();
+
+    clearGallery(i);
     page = 1;
 
-    const searchString = new FormData(event.currentTarget)
-      .get('search-text')
-      .trim();
+    searchString = new FormData(event.currentTarget).get('search-text').trim();
 
     if (!searchString) {
       console.log('Поле порожнє або містить лише пробіли');
@@ -53,45 +54,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log('searchString:', searchString);
     showLoader('waiting...');
 
-    const searchResult = getImagesByQuery(searchString, page, per_page)
-      .then(data => {
-        totalPages = Math.ceil(data.total / per_page);
-        console.log('totalPages:', totalPages);
-        handleResponse(data);
-      })
-      .catch(error => {
-        handleError(error);
-      })
-      .finally(() => {
-        console.log('HTTP Request successfull');
-        hideLoader();
-      });
+    //
+    try {
+      const data = await getImagesByQuery(searchString, page, per_page);
 
-    // handler for Load more button
-    const loadMoreBTN = document.querySelector('.load-more-btn');
-    loadMoreBTN.addEventListener('click', event => {
-      // console.log('addEventListener click');
-      hideLoadMoreButton();
-      showLoader();
-      page = page + 1;
-
-      const searchResult = getImagesByQuery(searchString, page, per_page)
-        .then(data => {
-          handleResponse(data);
-
-          scroll(2);
-        })
-        .catch(error => {
-          handleError(error);
-        })
-        .finally(() => {
-          console.log('HTTP Request successfull');
-          hideLoader();
-        });
-    });
-    // **********************************
+      totalPages = Math.ceil(data.total / per_page);
+      console.log('totalPages:', totalPages);
+      handleResponse(data);
+    } catch (error) {
+      handleError(error);
+    } finally {
+      console.log('HTTP Request successfull');
+      hideLoader();
+    }
   });
 });
+
+// handler for Load more button
+const loadMoreBTN = document.querySelector('.load-more-btn');
+loadMoreBTN.addEventListener('click', event => {
+  // console.log('addEventListener click');
+  hideLoadMoreButton();
+  showLoader();
+  page = page + 1;
+
+  const searchResult = getImagesByQuery(searchString, page, per_page)
+    .then(data => {
+      handleResponse(data);
+
+      scroll(2);
+    })
+    .catch(error => {
+      handleError(error);
+    })
+    .finally(() => {
+      console.log('HTTP Request successfull');
+      hideLoader();
+    });
+});
+// **********************************
 
 function handleResponse(data) {
   //   hideLoader('hiding');

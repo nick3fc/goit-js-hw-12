@@ -74,7 +74,7 @@ export function createGallery(images) {
 export function clearGallery(images) {
   const galleryList = document.querySelector('.gallery');
   galleryList.innerHTML = '';
-  images = [];
+  // images = [];
   // lightbox.refresh();
 }
 
