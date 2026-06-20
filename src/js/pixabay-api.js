@@ -1,7 +1,7 @@
 //  імпорт бібліотек
 import axios from 'axios';
 
-export async function getImagesByQuery(query, page, per_page) {
+export async function getImagesByQuery(query, page, per_page = 15) {
   // return axios
   console.log('page', page);
   try {
@@ -20,6 +20,7 @@ export async function getImagesByQuery(query, page, per_page) {
     return response.data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
   // return console.log('GET searchImage:', query, axiosGet);
 }

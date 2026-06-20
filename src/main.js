@@ -72,25 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // handler for Load more button
 const loadMoreBTN = document.querySelector('.load-more-btn');
-loadMoreBTN.addEventListener('click', event => {
+loadMoreBTN.addEventListener('click', async event => {
   // console.log('addEventListener click');
   hideLoadMoreButton();
   showLoader();
   page = page + 1;
 
-  const searchResult = getImagesByQuery(searchString, page, per_page)
-    .then(data => {
-      handleResponse(data);
+  try {
+    const data = await getImagesByQuery(searchString, page, per_page);
 
-      scroll(2);
-    })
-    .catch(error => {
-      handleError(error);
-    })
-    .finally(() => {
-      console.log('HTTP Request successfull');
-      hideLoader();
-    });
+    handleResponse(data);
+    scroll(2);
+  } catch (error) {
+    handleError(error);
+  } finally {
+    console.log('HTTP Request successfull');
+    hideLoader();
+  }
 });
 // **********************************
 
@@ -123,7 +121,7 @@ function handleResponse(data) {
       messageColor: '#fff',
       theme: 'light', // dark
       position: 'topRight',
-      message: `Congratulations! Found ${imagesArray.length} images`,
+      message: `Congratulations! Loaded ${imagesArray.length} images`,
     });
 
     // console.log('Rendering gallery...');
