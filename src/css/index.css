@@ -70,7 +70,7 @@ ul {
 .input-wrapper input:focus {
   border-color: #4e75ff;
 }
-.input-wrapper button {
+button {
   width: 91px;
   height: 40px;
   border-radius: 8px;
@@ -90,13 +90,13 @@ ul {
     background-color 250ms ease,
     box-shadow 250ms ease;
 }
-.input-wrapper button:hover {
+button:hover {
   background: #6c8cff;
 }
-.input-wrapper button:active {
+button:active {
   background: #3b73d3;
 }
-.input-wrapper button:disabled {
+button:disabled {
   /* background: #d9dbe0; */
   opacity: 0.5;
   cursor: not-allowed;
@@ -205,11 +205,14 @@ ul {
 }
 /* #endregion */
 
-/* @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.load-more-btn {
+  width: 125px;
+}
+.hidden {
+display: none;
+cursor: not-allowed;
+
+}
 
 /* ---------------------------- */
 /* .back-link-wrapper {
@@ -291,29 +294,4 @@ ul {
 /* .form input:hover {
   border: 1px solid #000;
 }
-.form button {
-  width: 360px;
-  height: 40px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 10px;
-
-  border-radius: 8px;
-  border: none;
-  padding: 8px 16px;
-
-  background: #4e75ff;
-
-  font-weight: 500;
-  font-size: 16px;
-
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: #fff;
-}
-.form button:hover {
-  background: #6c8cff;
-} */

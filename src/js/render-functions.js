@@ -92,6 +92,16 @@ export function hideLoader(arg) {
   const loader = document.querySelector('.loader');
   loader.classList.remove('is-active');
 }
+export function showLoadMoreButton() {
+  const loadMoreBTN = document.querySelector('.load-more-btn');
+  loadMoreBTN.classList.remove('hidden');
+  console.log('showBTN');
+}
+export function hideLoadMoreButton() {
+  const loadMoreBTN = document.querySelector('.load-more-btn');
+  loadMoreBTN.classList.add('hidden');
+  console.log('hideBTN');
+}
 
 // +++++++++++ ++++++++++++++++++++++++++++++ +++++++++++
 // ++++++++++++++++++++ Description +++++++++++++++++++++
@@ -101,3 +111,5 @@ export function hideLoader(arg) {
 // clearGallery(). Ця функція нічого не приймає та повинна очищати вміст контейнера галереї. Нічого не повертає.
 // showLoader(). Ця функція нічого не приймає, повинна додавати клас для відображення лоадера. Нічого не повертає.
 // hideLoader(). Ця функція нічого не приймає, повинна прибирати клас для відображення лоадера. Нічого не повертає.
+// showLoadMoreButton(). Ця функція нічого не приймає, повинна додавати клас для відображення кнопки Load more. Нічого не повертає.
+// hideLoadMoreButton(). Ця функція нічого не приймає, повинна прибирати клас для відображення кнопки Load more. Нічого не повертає.

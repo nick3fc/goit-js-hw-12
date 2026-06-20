@@ -1,8 +1,9 @@
 //  імпорт бібліотек
 import axios from 'axios';
 
-export async function getImagesByQuery(query) {
+export async function getImagesByQuery(query, page, per_page) {
   // return axios
+  console.log('page', page);
   try {
     const response = await axios.get('https://pixabay.com/api/', {
       params: {
@@ -11,6 +12,8 @@ export async function getImagesByQuery(query) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
+        page: page,
+        per_page: per_page,
       },
     });
     // .then(response => response.data);
