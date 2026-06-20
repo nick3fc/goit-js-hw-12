@@ -1,6 +1,9 @@
 // -----------lib connection code----------
-import SimpleLightbox from 'simplelightbox';
+// import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
+import * as SL from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+const SimpleLightbox = SL.default.default;
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
